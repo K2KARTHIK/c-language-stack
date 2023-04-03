@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_STACK 50
+
+char stack[MAX_STACK];
+int top = -1;
+
+void push(char ch) 
+{
+    if (top >= MAX_STACK - 1) {
+        printf("Stack overflow\n");
+        exit(1);
+    } 
+    else 
+    {
+        stack[++top] = ch;
+    }
+}
+char pop() 
+{
+    if (top < 0) {
+        printf("Stack Underflow\n");
+        exit(1);
+    } else {
+        return stack[top--];
+    }
+}
+
+char* removeDuplicates(char* str) 
+{
+    int i, n = strlen(str);
+    char ch;
+
+    for (i = 0; i < n; i++) 
+    {
+        ch = str[i];
+
+        if (top==-1 || ch!=stack[top]) 
+        {
+            push(ch);
+        } 
+        else 
+        {
+            pop();
+        }
+    }
+
+    char* result = (char*) malloc(sizeof(char) * (top + 2));
+    int j;
+
+    for (i = 0, j = top; j >= 0; i++, j--) 
+    {
+        result[i] = stack[j];
+    }
+
+    result[i] = '\0';
+    return result;
+}
+int main() 
+{
+    char str[MAX_STACK];
+
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    char* result = removeDuplicates(str);
+    printf("Result = %s\n", result);
+
+    free(result);
+   return 0;
+}
+
+
+
+Input: str= “azxxzy” 
+Output: ay Removal of “xx” modifies the string to “azzy”. Now, the removal of “zz” modifies the string to “ay”. Since the string “ay” doesn’t contain duplicates, 
+       the output is ay.
+
+
+
+
+
+
