@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include<string.h>
+
+#define MAX_STACK 100
+
+int stack[MAX_STACK];
+int top = -1;
+
+void push(int value) {
+    if (top >= MAX_STACK- 1) {
+        printf("Stack overflow\n");
+        exit(1);
+    } else {
+        stack[++top] = value;
+    }
+}
+
+int pop() {
+    if (top < 0) {
+        printf("Stack underflow\n");
+        exit(1);
+    } else {
+        return stack[top--];
+    }
+}
+
+int evaluate(char *exp) {
+    int i, op1, op2, r;
+    char ch;
+
+    for (i = strlen(exp) - 1; i >= 0; i--) {
+        ch = exp[i];
+
+        if (isdigit(ch)) {
+            push(ch - '0');
+        } else {
+            op1 = pop();
+            op2 = pop();
+
+            switch (ch) {
+                case '+':
+                    push(op1 + op2);
+                    break;
+                case '-':
+                    push(op1 - op2);
+                    break;
+                case '*':
+                    push(op1 * op2);
+                    break;
+                case '/':
+                    push(op1 / op2);
+                    break;
+                case '%':
+                    push(op1 % op2);
+                    break;
+            }
+        }
+    }
+
+    r = pop();
+    return r;
+}
+
+int main() {
+    char exp[MAX_STACK];
+
+    printf("Enter a prefix expression: ");
+    scanf("%s", exp);
+
+    int r = evaluate(exp);
+    printf("Result = %d\n", r);
+    return 0;
+}
+
+
+
+
+
+
+Example:
+
++9*26
+
+Ans: 21
