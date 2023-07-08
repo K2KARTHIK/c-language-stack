@@ -1,0 +1,96 @@
+// stack using array
+// #include<stdio.h>
+// #include<stdlib.h>
+// #include<string.h>
+
+// #define MAX_STACK 100
+
+// int stack[MAX_STACK];
+// int top=-1;
+
+// void push()
+// {
+//     int x;
+//     printf("Enter the data ");
+//     scanf("%d",&x);
+//     if(top == MAX_STACK-1)
+//     {
+//         printf("Stack overflow");
+//     }
+//     else
+//     {
+//         top++;
+//         stack[top]=x;
+//     }
+// }
+
+// void pop()
+// {
+//     int y;
+//     if(top ==-1)
+//     {
+//         printf("Stack underflow");
+//     }
+//     else
+//     {
+//         y=stack[top];
+//         printf("%d is poped out",y);
+//         top--;
+//     }
+// }
+
+// void peek()
+// {
+//     if(top == -1)
+//     {
+//         printf("Stack is empty");
+//     }
+//     else
+//     {
+//         printf("%d",stack[top]);
+//     }
+// }
+
+
+// void display()
+// {
+//     int i;
+//     for(i=top;i>=0;i--)
+//     {
+//         printf("%d ",stack[i]);
+//     }
+
+// }
+
+
+// int main()
+// {
+//     int choice;
+//     while(1)
+//     {
+//         printf("Enter 1 to push \n");
+//         printf("Enter 2 to pop \n");
+//         printf("Enter 3 to peek \n");
+//         printf("Enter 4 to display \n");
+//         scanf("%d",&choice);
+//         switch(choice)
+//         {
+//             case 1:
+//                 push();
+//                 break;
+//             case 2:
+//                 pop();
+//                 break;
+//             case 3:
+//                 peek();
+//                 break;
+//             case 4:
+//                 display();
+//                 break;
+//             default:
+//                 printf("invalid\n");
+//                 break;
+//         }
+//     }
+
+// }
